@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="select2.css">
+	<style type="text/css">
+	html{
+		min-height: 100%;
+	}
+	body{
+		margin: 0;
+		min-height: 100%;
+	}
+	dl{
+		overflow: hidden;
+		margin: 20px 0;
+	}
+	dt{
+		float: left;
+		background-color: #bbb;
+		text-align: center;
+		width: 80px;
+		height: 30px;
+		line-height: 30px;
+		border-radius: 2px;
+		box-shadow: 1px 1px 2px black;
+	}
+	dd{
+		float: left;
+		margin-left: 20px;
+	}
+	.test_box {
+		width: 400px;
+		min-height: 120px;
+		max-height: 300px;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 3px;
+		outline: 0;
+		border: 1px solid #a0b3d6;
+		font-size: 16px;
+		word-wrap: break-word;
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
+	.single{
+		min-height: 25px;
+		line-height: 25px;
+	}
+	</style>
+</head>
+<body>
+<div style="width : 1200px;min-height:100%; margin : 50px auto 0; overflow: hidden;">
+	<div style="width :579px; height : 500px; float : left; border-right: 1px dashed #999;">
+		<div>
+			<dl>
+				<dt>标题URL</dt>
+				<dd><div class="test_box single" contenteditable="true">https://www.dnspod.com</div></dd>
+			</dl>
+			<dl>
+				<dt>标题内容</dt>
+				<dd><div class="test_box single" contenteditable="true">DNSPod维护通知</div></dd>
+			</dl>
+			<dl>
+				<dt>文本内容</dt>
+				<dd><div class="test_box" contenteditable="true">阿缩进地方了；卡其所发；卢克俭阿所发大家卡所发斯拉夫大家阿拉似的解放</div></dd>
+			</dl>
+			<dl>
+				<dt>插入图片</dt>
+				<dd><div class="test_box single" contenteditable="true">https://www.dnspod.com/image/2013.png</div></dd>
+			</dl>
+			<dl>
+				<dt>文本内容</dt>
+				<dd><div class="test_box" contenteditable="true">阿缩进地方了；卡其所发；卢克俭阿所发大家卡所发斯拉夫大家阿拉似的解放</div></dd>
+			</dl>
+		</div>
+		<div>
+			<select id="select">
+				<option value="AL">文本内容</option>
+				<option value="WY">插入图片</option>
+				<option value="HH">URL</option>
+			</select>
+			<button class="btn btn-primary">添加新内容</button>
+		</div>
+	</div>
+	<div style = "width : 580px; float : right;">
+		<table cellspacing="0" cellpadding="0" border="0" align="center" style="font-size:12px;font-family:Helvetica Neue, Luxi Sans, DejaVu Sans, Tahoma, Hiragino Sans GB, STHeiti, Microsoft YaHei, Arial, sans-serif;border-collapse:collapse;width:580px;background-color:#ffffff;">
+		<tbody>
+		<tr>
+			<td style="width:580px;height:55px;" colspan="3">
+				<img src="http://url.go4u.cn:9527/201351title" width="580px" height="55px">
+			</td>
+		</tr>
+		<tr>
+			<td style="max-width:30px;padding:0 15px;"></td>
+			<td style="max-width:520px;width:520px;padding:0;">
+
+				<table cellspacing="0" cellpadding="0" border="0" align="center" width="520px"><tbody>
+				<tr>
+					<td align="center" style="color:#99cc66;line-height:50px;font-size:21px;"><p style="margin:0;padding:0;padding-top:15px;padding-right:30px;">DNSPod  D监控升级提醒</p></td>
+				</tr>
+				<tr>
+					<td align="left">
+					<p style="padding:0;margin:0;color:#7e7e7e;font-size:14px;line-height:26px;">尊敬的DNSPod用户：</p>
+					<p style="padding:0;margin:0;text-indent:2em;color:#7e7e7e;font-size:14px;line-height:26px;">您好！</p>
+					<p style="padding:0;margin:0 0 10px 0;text-indent:2em;color:#7e7e7e;font-size:14px;line-height:26px;">为了给您带来更好的体验，D监控于7月4日凌晨 00：00-02：00 升级，升级后将默认对短时间（1分钟）内的宕机不再提醒。如您仍需要精准的宕机提醒，可到D监控后台进行手动修改。</p>
+					</td>
+				</tr>
+				<tr>
+					<td align="center">
+						<img src="http://blog.dnspod.cn/wp-content/uploads/2013/07/nonotice.jpg" height="239px" width="490px">
+					</td>
+				</tr>
+				<tr>
+					<td align="left">
+					<p style="padding:0;margin:10px 0 0 0;color:#7e7e7e;font-size:14px;line-height:26px;padding-bottom:10px;">非常感谢您对DNSPod的支持与信赖！DNSPod的未来，将因您而改变。</p>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<p style="padding:20px 0;margin:0;color:#7e7e7e;font-size:14px;line-height:26px;">DNSPod团队</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<table style="border-bottom:1px dashed #7e7e7e;" width="520px;"></table>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding-top:20px;">
+						<table><tbody>
+							<tr><td style="max-width:84px;padding:0 42px;"></td>
+							<td style="max-width:82px;">
+								<img src="http://url.go4u.cn:9527/qr5" width="82px" height="82px" alt="DNSPod微信二维码" title="DNSPod微信二维码">
+							</td>
+							<td style="max-width:30px;padding:0 15px;"></td>
+							<td>
+								<table><tbody>
+									<tr>
+										<td style="min-height:24px;padding:12px;" colspan="3">
+										</td>
+									</tr>
+									<tr>
+										<td colspan="3">
+											<p style="padding:0;margin:0;color:#7e7e7e;font-size:10px;line-height:16px;">
+												联系方式:
+											</p>
+											<p style="padding:0;margin:0;color:#7e7e7e;font-size:10px;line-height:16px;">
+												TEL: 400-111-1234<br>
+												<a target="_blank" href="http://url.go4u.cn:9527/tickets" style="color:#2bd2f3" _act="check_domail">提交工单</a><br>
+											</p>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<p style="padding:0;margin:0;color:#7e7e7e;font-size:10px;line-height:20px;">
+												关注我们的微博
+											</p>
+										</td>
+										<td>
+											<a target="_blank" href="http://url.go4u.cn:9527/1a200f58e7222b3705b0be40237e496e" _act="check_domail">
+											<img src="http://blog.dnspod.cn/wp-content/uploads/2013/01/weibo5.jpg" width="70px" height="20px" alt="DNSPod新浪微博" title="DNSPod新浪微博">
+											</a>
+										</td>
+										<td>
+											<a target="_blank" href="http://url.go4u.cn:9527/59a802c230fc37545cb60365c02a26a2" _act="check_domail">
+											<img src="http://blog.dnspod.cn/wp-content/uploads/2013/01/tqq5.jpg" width="70px" height="20px" alt="DNSPod腾讯微博" title="DNSPod腾讯微博">
+											</a>
+										</td>
+									</tr>
+								</tbody></table>
+							</td>
+						</tr></tbody></table>
+					</td>
+				</tr>
+				</tbody></table>
+			</td>
+			<td style="max-width:30px;padding:0 15px;"></td>
+		</tr>
+		<tr><td style="min-height:10px;padding:5px;" colspan="3"></td></tr>
+		</tbody>
+		</table>
+	</div>
+</div>
+<script type="text/javascript" src="jquery-1.7.1.js"></script>
+<script type="text/javascript" src="select2.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#select").select2();
+	})
+</script>
+</body>
+</html>
