@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="style/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="style/select2.css">
 	<style type="text/css">
 	html{
@@ -11,75 +11,108 @@
 	body{
 		margin: 0;
 		min-height: 100%;
+		line-height: 20px;
+
 	}
 	dl{
-		overflow: hidden;
 		margin: 20px 0;
+		position: relative;
+		clear: both;
 	}
 	dt{
-		float: left;
-		background-color: #bbb;
-		text-align: center;
-		width: 80px;
-		height: 30px;
-		line-height: 30px;
-		border-radius: 2px;
-		box-shadow: 1px 1px 2px black;
+		display: inline-block;
+	}
+	dt button{
+		width: 100px;
 	}
 	dd{
-		float: left;
-		margin-left: 20px;
+		display: inline-block;
+		margin-left: 10px;
 	}
-	.test_box {
-		width: 400px;
-		min-height: 120px;
-		max-height: 300px;
-		margin-left: auto;
-		margin-right: auto;
-		padding: 3px;
-		outline: 0;
-		border: 1px solid #a0b3d6;
-		font-size: 16px;
-		word-wrap: break-word;
-		overflow-x: hidden;
-		overflow-y: auto;
-	}
-	.single{
-		min-height: 25px;
-		line-height: 25px;
+	dd input,dd textarea{
+		width: 350px;
 	}
 	</style>
 </head>
 <body>
 <div style="width : 1200px;min-height:100%; margin : 50px auto 0; overflow: hidden;">
-	<div style="width :579px; height : 500px; float : left; border-right: 1px dashed #999;">
+	<div style="width :579px; float : left; border-right: 1px dashed #999;">
 		<div>
 			<dl>
-				<dt>标题URL</dt>
-				<dd><div class="test_box single" contenteditable="true">https://www.dnspod.com</div></dd>
+				<dt><div class="btn-group">
+					<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+						标题URL
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a href="#empty">清空</a></li>
+						<li><a href="#delete">删除</a></li>
+					</ul>
+				</div></dt>
+				<dd><input type="text" placeholder="这里输入URL地址"></dd>
 			</dl>
 			<dl>
-				<dt>标题内容</dt>
-				<dd><div class="test_box single" contenteditable="true">DNSPod维护通知</div></dd>
+				<dt><div class="btn-group">
+					<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+						标题内容
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a href="#">清空</a></li>
+						<li><a href="#">删除</a></li>
+					</ul>
+				</div></dt>
+				<dd><input type="text" placeholder="这里输入标题" style="width: 240px;"></dd>
+				<dd><div class="input-prepend">
+						<span class="add-on">#</span>
+						<input class="span1" id="prependedInput" type="text" maxlength="6" pattern="[0-9a-fA-F]+" placeholder="RGB">
+					</div>
+            	</dd>
 			</dl>
 			<dl>
-				<dt>文本内容</dt>
-				<dd><div class="test_box" contenteditable="true">阿缩进地方了；卡其所发；卢克俭阿所发大家卡所发斯拉夫大家阿拉似的解放</div></dd>
+				<dt><div class="btn-group">
+					<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+						文本内容
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a href="#">清空</a></li>
+						<li><a href="#">删除</a></li>
+					</ul>
+				</div></dt>
+				<dd><textarea rows="5" placeholder="这里输入文本内容"></textarea></dd>
 			</dl>
 			<dl>
-				<dt>插入图片</dt>
-				<dd><div class="test_box single" contenteditable="true">https://www.dnspod.com/image/2013.png</div></dd>
+				<dt><div class="btn-group">
+					<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+						插入图片
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a href="#">清空</a></li>
+						<li><a href="#">删除</a></li>
+					</ul>
+				</div></dt>
+				<dd><input type="text" placeholder="这里输入图片URL"></dd>
 			</dl>
 			<dl>
-				<dt>文本内容</dt>
-				<dd><div class="test_box" contenteditable="true">阿缩进地方了；卡其所发；卢克俭阿所发大家卡所发斯拉夫大家阿拉似的解放</div></dd>
+				<dt><div class="btn-group">
+					<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+						文本内容
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a href="#">清空</a></li>
+						<li><a href="#">删除</a></li>
+					</ul>
+				</div></dt>
+				<dd><textarea rows="5" placeholder="这里输入文本内容"></textarea></dd>
 			</dl>
 		</div>
 		<div>
-			<select id="select">
+			<select id="select" style="width : 300px">
 				<option value="AL">文本内容</option>
 				<option value="WY">插入图片</option>
-				<option value="HH">URL</option>
 			</select>
 			<button class="btn btn-primary">添加新内容</button>
 		</div>
@@ -88,9 +121,7 @@
 		<table cellspacing="0" cellpadding="0" border="0" align="center" style="font-size:12px;font-family:Helvetica Neue, Luxi Sans, DejaVu Sans, Tahoma, Hiragino Sans GB, STHeiti, Microsoft YaHei, Arial, sans-serif;border-collapse:collapse;width:580px;background-color:#ffffff;">
 		<tbody>
 		<tr>
-			<td style="width:580px;height:55px;" colspan="3">
-				<img src="http://url.go4u.cn:9527/201351title" width="580px" height="55px">
-			</td>
+			<td style="width:580px;height:55px;" colspan="3"><img src="http://url.go4u.cn:9527/201351title" width="580px" height="55px"></td>
 		</tr>
 		<tr>
 			<td style="max-width:30px;padding:0 15px;"></td>
@@ -104,6 +135,10 @@
 					<td align="left">
 					<p style="padding:0;margin:0;color:#7e7e7e;font-size:14px;line-height:26px;">尊敬的DNSPod用户：</p>
 					<p style="padding:0;margin:0;text-indent:2em;color:#7e7e7e;font-size:14px;line-height:26px;">您好！</p>
+					</td>
+				</tr>
+				<tr>
+					<td align="left">
 					<p style="padding:0;margin:0 0 10px 0;text-indent:2em;color:#7e7e7e;font-size:14px;line-height:26px;">为了给您带来更好的体验，D监控于7月4日凌晨 00：00-02：00 升级，升级后将默认对短时间（1分钟）内的宕机不再提醒。如您仍需要精准的宕机提醒，可到D监控后台进行手动修改。</p>
 					</td>
 				</tr>
@@ -185,6 +220,7 @@
 </div>
 <script type="text/javascript" src="js/libs/jquery-1.7.1.js"></script>
 <script type="text/javascript" src="js/libs/select2.min.js"></script>
+<script type="text/javascript" src="js/libs/bootstrap.min.js"></script>
 <script type="text/javascript">
 	$(function(){
 		$("#select").select2();
