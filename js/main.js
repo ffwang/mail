@@ -85,6 +85,7 @@ define(function(require, exports, module) {
 			events : {
 				"keyup .span2" : "setTitle",
 				"change .span1" : "setColor",
+				"keyup .span1" : "setColor",
 				"click .js-empty" : "empty",
 			},
 			initialize : function(options){
@@ -100,7 +101,9 @@ define(function(require, exports, module) {
 				this.model.set({"title" : this.$el.find(".span2").val()});
 			},
 			setColor : function(){
-				this.model.set({"color" : this.$el.find(".span1").val()});
+				var reg = /#.*/;
+				var color = reg.test(this.$el.find(".span1").val()) ? this.$el.find(".span1").val() : '#'+this.$el.find(".span1").val();
+				this.model.set({"color" : color});
 			},
 			empty : function(){
 				this.model.set({"title" : ""});
