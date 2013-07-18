@@ -18,6 +18,7 @@
 		template : $("#edit_banner_template").html(),
 		events : {
 			"blur input" : "setURL",
+			"click .js-empty" : "empty",
 		},
 		initialize : function(options){
 			this.model = options.model;
@@ -30,7 +31,11 @@
 		},
 		setURL : function(){
 			this.model.set({"url" : this.$el.find("input").val()});
-		}
+		},
+		empty : function(){
+			this.model.set({"url" : ""});
+			this.$el.find("input").val("");
+		},
 	});
 
 	//TableBannerView
@@ -59,7 +64,7 @@
 	var TitleModel = Backbone.Model.extend({
 		defaults : {
 			title : '标题',
-			color : '99cc66',
+			color : '#99cc66',
 		},
 	});
 
@@ -72,6 +77,7 @@
 		events : {
 			"keyup .span2" : "setTitle",
 			"change .span1" : "setColor",
+			"click .js-empty" : "empty",
 		},
 		initialize : function(options){
 			this.model = options.model;
@@ -87,6 +93,10 @@
 		},
 		setColor : function(){
 			this.model.set({"color" : this.$el.find(".span1").val()});
+		},
+		empty : function(){
+			this.model.set({"title" : ""});
+			this.$el.find(".span2").val("");
 		},
 	});
 
@@ -116,6 +126,11 @@
 	var ImageModel = Backbone.Model.extend({
 		defaults : {
 			url : 'http://blog.dnspod.cn/wp-content/uploads/2013/07/nonotice.jpg',
+			table_model : '',
+		},
+		clear : function(){
+			this.get("table_model").clear();
+			this.destroy();
 		},
 	});
 
@@ -127,6 +142,8 @@
 		template : $("#edit_image_template").html(),
 		events : {
 			"blur input" : "setURL",
+			"click .js-delete" : "clear",
+			"click .js-empty" : "empty",
 		},
 		initialize : function(options){
 			this.model = options.model;
@@ -139,7 +156,16 @@
 		},
 		setURL : function(){
 			this.model.set({"url" : this.$el.find("input").val()});
-		}
+		},
+		clear : function(){
+			this.model.clear();
+			this.$el.remove();
+			this.remove();
+		},
+		empty : function(){
+			this.model.set({"url" : ""});
+			this.$el.find("input").val("");
+		},
 	});
 
 	//TableImageView
@@ -150,6 +176,7 @@
 		initialize : function(options){
 			this.model = options.model;
 			this.box = options.box;
+			this.model.set({"table_model" : this});
 			this.listenTo(this.model, "change", this.render);
 			this.box.append(this.$el.html(Mustache.to_html(this.template, this.model.toJSON())));
 		},
@@ -157,6 +184,10 @@
 			if(!this.model.get("url"))
 				this.model.set({"url" : "http://blog.dnspod.cn/wp-content/uploads/2013/07/nonotice.jpg"});
 			this.$el.html(Mustache.to_html(this.template, this.model.toJSON()));
+		},
+		clear : function(){
+			this.$el.remove();
+			this.remove();
 		},
 	});
 
@@ -169,6 +200,11 @@
 	var TextModel = Backbone.Model.extend({
 		defaults : {
 			content : '文字内容',
+			table_model : '',
+		},
+		clear : function(){
+			this.get("table_model").clear();
+			this.destroy();
 		},
 	});
 
@@ -180,6 +216,8 @@
 		template : $("#edit_text_template").html(),
 		events : {
 			"keyup textarea" : "setContent",
+			"click .js-delete" : "clear",
+			"click .js-empty" : "empty",
 		},
 		initialize : function(options){
 			this.model = options.model;
@@ -193,6 +231,15 @@
 		setContent : function(){
 			this.model.set({"content" : this.$el.find("textarea").val()});
 		},
+		clear : function(){
+			this.model.clear();
+			this.$el.remove();
+			this.remove();
+		},
+		empty : function(){
+			this.model.set({"content" : ""});
+			this.$el.find("textarea").val("");
+		}
 	});
 
 	//TableTextView
@@ -203,6 +250,7 @@
 		initialize : function(options){
 			this.model = options.model;
 			this.box = options.box;
+			this.model.set({"table_model" : this});
 			this.listenTo(this.model, "change", this.render);
 			this.box.append(this.$el.html(Mustache.to_html(this.template, this.model.toJSON())));
 		},
@@ -211,9 +259,43 @@
 				this.model.set({"content" : "文字内容"});
 			this.$el.html(Mustache.to_html(this.template, this.model.toJSON()));
 		},
+		clear : function(){
+			this.$el.remove();
+			this.remove();
+		},
 	});
 	
 ///////////  Text End  //////////
+
+///////////  Select Start  //////////
+
+	var SelectView = Backbone.View.extend({
+		el : $("#select_box"),
+		template : $("#select_template").html(),
+		events : {
+			"click button" : "addNew",
+		},
+		initialize : function(){
+			this.render();
+		},
+		render : function(){
+			this.$el.html(this.template);
+		},
+		addNew : function(){
+			var type = $("#select").val();
+			if(type == "text"){
+				var textmodel = new TextModel();
+				new EditTextView({"model" : textmodel, "box" : $('#edit_box')});
+				new TableTextView({"model" : textmodel, "box" : $('#table_box')});
+			}else if(type == "image"){
+				var imagemodel = new ImageModel();
+				new EditImageView({"model" : imagemodel, "box" : $('#edit_box')});
+				new TableImageView({"model" : imagemodel, "box" : $('#table_box')});
+			}
+		}
+	});
+
+///////////  Select End  //////////
 
 	 var bannermodel = new BannerModel();
 	 new EditBannerView({"model" : bannermodel, "box" : $('#edit_box')});
@@ -230,5 +312,7 @@
 	 var textmodel2 = new TextModel();
 	 new EditTextView({"model" : textmodel2, "box" : $('#edit_box')});
 	 new TableTextView({"model" : textmodel2, "box" : $('#table_box')});
+
+	 new SelectView();
 
 })(jQuery);
